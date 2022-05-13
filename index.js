@@ -1,5 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
+require('dotenv').config()
+
 const app = express();
 
 app.use(
@@ -10,15 +12,15 @@ app.use(
 
 app.use(express.json())
 
-const personRoutes = require('./routes/personRoutes')
+const serieRoutes = require('./routes/serieRoutes')
 
-app.use('/person', personRoutes)
+app.use('/serie', serieRoutes)
 
 app.get('/', (req, res) => {
     res.json({message: 'Teste'})
 })
 
-mongoose.connect('mongodb+srv://lucasdcoutinho:100lucas@cluster0.f1yex.mongodb.net/myFirstDatabase?retryWrites=true&w=majority')
+mongoose.connect(`mongodb+srv://${process.env.LOGIN}:${process.env.PASSOWRD}@cluster0.f1yex.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`)
 .then(() => {
     console.log('Conectado')
     app.listen(3000)
