@@ -19,9 +19,11 @@ app.use(express.json())
 
 const serieRoutes = require('./routes/serieRoutes')
 const musicRoutes = require('./routes/musicRoutes')
+const movieRoutes = require('./routes/movieRoutes')
 
 app.use('/serie', serieRoutes)
 app.use('/music', musicRoutes)
+app.use('/movie', movieRoutes)
 
 app.get('/', (req, res) => {
     res.json({message: 'Teste'})
